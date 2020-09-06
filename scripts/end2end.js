@@ -38,7 +38,6 @@ async function eth2Hmy() {
 
         console.log("minting on Harmony")
         let txHash = await hb.handleEthProof(proof)
-        console.log(txHash)
 
         let finalHmyBal = await hb.getBalance(hb.userAccount.address)
         console.log("after hrc20 balance: ", finalHmyBal.toString())
@@ -50,7 +49,7 @@ async function eth2Hmy() {
 // hmy2Eth must be called after eth2Hmy
 async function hmy2Eth() {
     try {
-        console.log("====================== Lock in Harmony ==========================")
+        console.log("====================== Burn on Harmony ==========================")
         let initialBal = await hb.getBalance(hb.userAccount.address)
         console.log("initial erc20 balance: ", initialBal.toString())
 
@@ -67,7 +66,7 @@ async function hmy2Eth() {
 
         let proof = await hb.getProof(txHash)
 
-        console.log("====================== Unlock on Harmony ==========================")
+        console.log("====================== Unlock on Ethereum ==========================")
 
         let initialHmyBal = await eb.getBalance(eb.userAccount.address)
         console.log("initial erc20 balance: ", initialHmyBal)
